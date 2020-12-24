@@ -1,0 +1,71 @@
+:root {
+    --text-color: #00cc66;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+#main-home {
+    height: 100vh !important;
+}
+#main-home .row {
+    height: 100%;
+}
+input {
+    width: 100%;
+    height: 44px;
+    padding: 14px;
+    border-radius: 50px;
+    border: 0 ;
+    font-size: 18px;
+    background: #f2f2f2;
+    margin-bottom: 6px;
+}
+input:focus {
+    outline: none;
+}
+.auth-btn {
+    border-radius: 50px;
+    padding: 8px;
+    border: 0;
+    background: var(--text-color);
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    transition-duration: 0.4s;
+    border: 1.2px solid var(--text-color);
+    text-align: center;
+}
+.auth-btn:focus {
+    outline: none;
+}
+.auth-btn:hover {
+    background: #fff;
+    color: var(--text-color);
+    border: 1.2px solid var(--text-color);
+}
+.heading {
+    color: var(--text-color);
+    font-size: 3rem;
+    font-weight: 600;
+    font-variant: small-caps;
+}
+.dashboard-nav {
+    background: var(--text-color);
+    padding: 10px;
+}
+.dashboard-heading {
+    color: #fff;
+    font-weight: 600;
+    font-size: 2rem;
+}
+.dashboard-logout {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+.dashboard-logout:hover {
+    text-decoration: underline !important;
+}
