@@ -4,21 +4,6 @@ const User = require('../models/user-model');
 const bcrypt = require('bcrypt');
 
 module.exports.home = (req, res) => {
-    const newUser = new User({
-        fullName: 'harsh verma',
-        username: 'harshverma@gmail.com',
-        password: 'harshverma'
-    });
-    // newUser.save()
-    //     .then(res => console.log('successfully added'))
-    //     .catch(err => console.log(`Error:- ${err}`))
-    // bcrypt.hash('harsh', 10, (err, hash) => {
-    //     if (err) {
-    //         throw err;
-    //     } else {
-    //         console.log(hash)
-    //     }
-    // })
     res.render('index');
 }
 
@@ -102,5 +87,13 @@ module.exports.dashboard = (req, res) => {
 }
 
 module.exports.logout = (req, res) => {
-
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+            res.redirect('/dashboard');
+        } else {
+            res.clearCookie('sid');
+            res.redirect('/');
+        }
+    });
 }
