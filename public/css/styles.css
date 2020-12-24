@@ -69,3 +69,10 @@ input:focus {
 .dashboard-logout:hover {
     text-decoration: underline !important;
 }
+.logout-btn {
+    background: transparent;
+    border: 0;
+}
+.logout-btn:focus {
+    outline: none;
+}

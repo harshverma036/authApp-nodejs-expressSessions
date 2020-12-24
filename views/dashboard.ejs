@@ -15,15 +15,20 @@
         <div class="container">
             <div class="d-flex flex-row align-items-center">
                 <p class="dashboard-heading mb-1">Dashboard - Auth App</p>
-                <a href="#!" class="text-decoration-none text-white ms-auto dashboard-logout">Logout</a>
+                <form action="/logout" method="POST" class="ms-auto">
+                    <button type="submit"
+                        class="text-decoration-none logout-btn text-white ms-auto dashboard-logout">Logout</button>
+                </form>
             </div>
         </div>
     </div>
 
     <div class="container-lg pt-5">
         <p class="heading">Welcome to Auth App!!</p>
-        <p class="text-primary">Name:-</p>
-        <p class="text-danger">Email:-</p>
+        <p class="text-primary">Name:- <%= fname %>
+        </p>
+        <p class="text-danger">Email:- <%= uname %>
+        </p>
     </div>
     <!-- Scripts -->
     <script src="js/bootstrap.min.js"></script>

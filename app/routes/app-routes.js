@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { home, login, register, dashboard, verifyLogin, registerUser } = require('../controller/user-controller');
+const { home, login, register, dashboard, verifyLogin, registerUser, logout } = require('../controller/user-controller');
 const session = require('express-session');
 
 // Middelwares
@@ -26,5 +26,6 @@ router.get('/register', redirectDashboard, register);
 router.get('/dashboard', redirectLogin, dashboard);
 router.post('/verifylogin', verifyLogin);
 router.post('/registeruser', registerUser);
+router.post('/logout', logout)
 
 module.exports = router;

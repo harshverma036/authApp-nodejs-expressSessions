@@ -27,8 +27,21 @@ module.exports.login = (req, res) => {
 }
 
 module.exports.verifyLogin = (req, res) => {
-    const { username, password } = req.body;
-    console.log(username, password);
+    const { email, password } = req.body;
+    if (!email || !password) {
+        console.log('Please enter username or password..')
+    } else {
+        User.findOne({ username: email })
+            .then(founduser => {
+                bcrypt.compare(password, founduser.password, (error, result) => {
+                    if (result === true) {
+                        req.session.userID = founduser._id;
+                        res.redirect('/dashboard');
+                    }
+                })
+            })
+            .catch(err => console.log(err))
+    }
 }
 
 module.exports.registerUser = (req, res) => {
@@ -41,15 +54,6 @@ module.exports.registerUser = (req, res) => {
                 if (err) {
                     throw err;
                 } else {
-                    // User.find({}, (data, err) => {
-                    // if (data) {
-                    //     console.log(data);
-                    //     console.log('User already exists');
-                    // } else {
-
-                    // }
-                    //     console.log(data);
-                    // });
                     User.find({ username: email })
                         .then(data => {
                             if (data.length > 0) {
@@ -70,7 +74,7 @@ module.exports.registerUser = (req, res) => {
                                     .catch(err => console.log(`Something went wrong, Error: ${err}`))
                             }
                         })
-                        .catch(err => console.log(err))
+                        .catch(error => console.log(error))
 
                 }
             });
@@ -86,5 +90,17 @@ module.exports.register = (req, res) => {
 }
 
 module.exports.dashboard = (req, res) => {
-    res.render('dashboard');
+    User.findById(req.session.userID)
+        .then(data => {
+            console.log(data)
+            res.render('dashboard', {
+                uname: data.username,
+                fname: data.fullName
+            });
+        })
+        .catch(err => console.log(err))
+}
+
+module.exports.logout = (req, res) => {
+
 }
